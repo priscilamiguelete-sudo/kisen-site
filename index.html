@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="KISEN Soluções Técnicas e Operacionais: estratégia em ação.">
-<link rel="icon" type="image/svg+xml" href="img/logo.svg">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <style>*{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>KISEN Soluções Operacionais</title>
 <style>
@@ -372,7 +372,7 @@ footer .brandname{color:var(--navy)!important}
 
 <header class="header" id="hdr">
   <div class="wrap" style="position:relative">
-    <button class="logo" data-go="inicio" aria-label="KISEN, página inicial"><img src="img/logo.svg" alt="KISEN" width="208" height="46"></button>
+    <button class="logo" data-go="inicio" aria-label="KISEN, página inicial"><img src="logo.svg" alt="KISEN" width="208" height="46"></button>
     <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <ul class="menu" id="menu">
       <li><button class="lnk" data-go="empresa" data-sec="empresa">A empresa</button></li>
@@ -392,7 +392,7 @@ footer .brandname{color:var(--navy)!important}
 <footer>
   <div class="wrap cols">
     <div>
-      <img src="img/logo.svg" alt="KISEN" width="180" height="40" style="margin-bottom:18px">
+      <img src="logo.svg" alt="KISEN" width="180" height="40" style="margin-bottom:18px">
       <p>Soluções técnicas e operacionais. Da demanda ao resultado: estruturamos, gerenciamos e mensuramos cada etapa da operação.</p>
     </div>
     <div><h4>Soluções</h4><ul id="f-svc"></ul></div>
@@ -438,68 +438,68 @@ const svg=(k,cls='')=>`<svg class="${cls}" viewBox="0 0 24 24" fill="none" strok
 const CONTROL=['Ordens de serviço e prioridades','Rotas e localização das equipes','Fotos, horários e comprovação','Painéis e relatórios gerenciais'];
 
 const SERVICES=[
- {id:'fiscalizacao',ic:'clip',nome:'Fiscalização e vistoria',curto:'Rondas, inspeções, cadastros e levantamento de evidências.',img:'img/cobertura.webp',tag:'Fiscalização / Vistoria técnica',
+ {id:'fiscalizacao',ic:'clip',nome:'Fiscalização e vistoria',curto:'Rondas, inspeções, cadastros e levantamento de evidências.',img:'cobertura.webp',tag:'Fiscalização / Vistoria técnica',
   lead:'Rondas, inspeções, cadastros e levantamento de evidências. Informação de campo organizada para apoiar decisões, com registro padronizado e rastreável.',
   entregas:[['Rondas','Percursos programados com registro de passagem.'],['Inspeções','Checklists padronizados por tipo de vistoria.'],['Cadastros','Levantamento estruturado de imóveis, equipamentos ou áreas.'],['Evidências','Fotos, horários e localização anexados a cada registro.']],
   rotina:['Checklist','Registro','Evidência','Relatório'],kpis:['Vistorias realizadas','Conformidade','Prazo de entrega dos laudos']},
- {id:'conservacao',ic:'tree',nome:'Conservação urbana',curto:'Apoio a ocorrências, zeladoria e serviços em campo.',img:'img/conservacao-noite.webp',tag:'Conservação urbana / Zeladoria',
+ {id:'conservacao',ic:'tree',nome:'Conservação urbana',curto:'Apoio a ocorrências, zeladoria e serviços em campo.',img:'conservacao-noite.webp',tag:'Conservação urbana / Zeladoria',
   lead:'Apoio operacional, zeladoria e resposta rápida. Equipes mobilizadas para atuar em ocorrências e serviços de campo, com registro e acompanhamento de cada atendimento.',
   entregas:[['Apoio a ocorrências','Resposta e isolamento de áreas com sinalização adequada.'],['Zeladoria','Rotinas de conservação de espaços e equipamentos públicos.'],['Serviços em campo','Execução programada ou sob demanda, com equipes e veículos.'],['Registro','Cada atendimento documentado para controle do contratante.']],
   rotina:['Pessoas','Recursos','Tecnologia'],kpis:['Tempo de resposta','Ocorrências encerradas','Serviços executados','Evidências registradas']},
- {id:'iluminacao',ic:'bulb',nome:'Iluminação pública',curto:'Vistoria, registro de falhas e apoio à manutenção leve.',img:'img/motos.webp',tag:'Iluminação pública / Vistoria',
+ {id:'iluminacao',ic:'bulb',nome:'Iluminação pública',curto:'Vistoria, registro de falhas e apoio à manutenção leve.',img:'motos.webp',tag:'Iluminação pública / Vistoria',
   lead:'Vistoria da rede, registro de falhas e apoio à manutenção leve. A operação identifica pontos com problema, documenta e encaminha, para que a manutenção atue com prioridade e informação correta.',
   entregas:[['Vistoria','Inspeção programada por rota e por região.'],['Registro de falhas','Pontos apagados ou danificados com foto, horário e localização.'],['Apoio à manutenção leve','Suporte operacional às equipes de manutenção.'],['Relatórios','Histórico por ponto e por região para planejamento.']],
   rotina:['Rotas','Vistoria','Registro','Encaminhamento'],kpis:['Pontos vistoriados','Falhas registradas','Tempo até o encaminhamento']},
- {id:'saneamento',ic:'drop',nome:'Saneamento',curto:'Cadastro, inspeção, leitura, comunicação e apoio operacional.',img:'img/manutencao.webp',tag:'Saneamento / Redes de água potável',
+ {id:'saneamento',ic:'drop',nome:'Saneamento',curto:'Cadastro, inspeção, leitura, comunicação e apoio operacional.',img:'manutencao.webp',tag:'Saneamento / Redes de água potável',
   lead:'Cuidado especializado em redes de água potável, da instalação de sistemas de distribuição ao apoio operacional em campo. A KISEN estrutura equipes para cadastro, inspeção, leitura e comunicação, com dados confiáveis para a rotina do saneamento.',
   entregas:[['Redes de água potável','Manutenção e instalação de sistemas de distribuição de água.'],['Cadastro','Levantamento e atualização de informações em campo.'],['Inspeção','Verificação de instalações e registro de não conformidades.'],['Leitura','Rotinas de leitura com comprovação.'],['Comunicação','Contato com usuários e apoio às ações operacionais.'],['Apoio operacional','Equipes de campo para as demandas do dia a dia da operação.']],
   rotina:['Cadastro','Inspeção','Leitura','Comunicação'],kpis:['Cadastros realizados','Inspeções concluídas','Leituras por rota','Não conformidades']},
- {id:'manutencao-predial',ic:'wrench',nome:'Manutenção predial',curto:'Rotinas preventivas, corretivas leves e acompanhamento.',img:'img/equipe.webp',tag:'Manutenção predial / Rotinas',
+ {id:'manutencao-predial',ic:'wrench',nome:'Manutenção predial',curto:'Rotinas preventivas, corretivas leves e acompanhamento.',img:'equipe.webp',tag:'Manutenção predial / Rotinas',
   lead:'Rotinas preventivas, corretivas leves e acompanhamento. Serviços continuados que mantêm o prédio funcionando, com plano, registro e histórico de cada intervenção.',
   entregas:[['Preventiva','Calendário de rotinas por sistema e por ambiente.'],['Corretiva leve','Atendimento a chamados com priorização.'],['Acompanhamento','Supervisão dos serviços e das condições do prédio.'],['Histórico','Registro de intervenções para planejamento e auditoria.']],
   rotina:['Plano','Chamados','Supervisão','Histórico'],kpis:['Preventivas cumpridas','Chamados atendidos no prazo','Reincidência']},
- {id:'atendimento',ic:'headset',nome:'Atendimento ao cidadão',curto:'Recepção de demandas, triagem, encaminhamento e retorno.',img:'img/atendimento.webp',tag:'Atendimento / Contact center',
+ {id:'atendimento',ic:'headset',nome:'Atendimento ao cidadão',curto:'Recepção de demandas, triagem, encaminhamento e retorno.',img:'atendimento.webp',tag:'Atendimento / Contact center',
   lead:'Central de apoio, cadastro e controle. Recebemos as demandas, fazemos a triagem, encaminhamos para a equipe certa e damos retorno, com cada atendimento registrado.',
   entregas:[['Recepção de demandas','Atendimento presencial, telefônico e digital.'],['Triagem','Classificação por tipo e prioridade.'],['Encaminhamento','Envio à equipe responsável, inclusive equipes de campo.'],['Retorno','Fechamento do ciclo com quem abriu a demanda.']],
   rotina:['Recepção','Triagem','Encaminhamento','Retorno'],kpis:['Tempo de atendimento','Demandas resolvidas','Retorno ao solicitante']},
- {id:'vigilancia',ic:'shield',nome:'Vigilância não armada',curto:'Controle de acesso, rondas preventivas e registro de ocorrências.',img:'img/centro-operacoes.webp',tag:'Vigilância / Segurança patrimonial',
+ {id:'vigilancia',ic:'shield',nome:'Vigilância não armada',curto:'Controle de acesso, rondas preventivas e registro de ocorrências.',img:'centro-operacoes.webp',tag:'Vigilância / Segurança patrimonial',
   lead:'Operação diária de segurança patrimonial, 100% controlada e mensurável. A KISEN combina pessoas, processos, gestão e tecnologia para proteger o patrimônio com rotina definida e evidência de cada passagem.',
   entregas:[['Controle de acesso','Fluxos de pessoas, visitantes e prestadores.'],['Rondas preventivas','Rotinas programadas e registros de passagem.'],['Ocorrências','Comunicação, evidências e tratamento dos desvios.'],['Indicadores','Presença, rondas, ocorrências, SLA e qualidade.']],
   rotina:['+ Pessoas','+ Processos','+ Gestão','+ Tecnologia'],kpis:['Presença no posto','Rondas cumpridas','Ocorrências tratadas','SLA','Qualidade']},
- {id:'facilities',ic:'building',nome:'Facilities',curto:'Hospitalidade, limpeza e organização.',img:'img/frota.webp',tag:'Gestão de facilities',
+ {id:'facilities',ic:'building',nome:'Facilities',curto:'Hospitalidade, limpeza e organização.',img:'frota.webp',tag:'Gestão de facilities',
   lead:'Hospitalidade, limpeza e organização: recepção, portaria e limpeza especializada, com respeito, profissionalismo e atenção à inclusão social. A KISEN integra os serviços de apoio do ambiente em uma única gestão, com rotina definida e indicadores de qualidade.',
   entregas:[['Recepção','Atendimento e apoio a pessoas, visitantes e eventos.'],['Portaria','Controle de entrada e saída com registro.'],['Limpeza especializada','Rotinas por ambiente, com checklist e supervisão.'],['Organização','Espaços prontos para uso e insumos sob controle.'],['Gestão integrada','Um único ponto de contato e um único painel de acompanhamento.']],
   rotina:['Rotina definida','Supervisão','Checklist','Indicadores'],kpis:['Qualidade percebida','Checklists cumpridos','Consumo de insumos']}
 ];
 
 const SLIDES=[
- {img:'img/centro-operacoes.webp',tag:'KISEN: estratégia em ação',title:'Da demanda ao resultado',sub:'Estruturamos, gerenciamos e mensuramos cada etapa da operação.',go:'solucoes'},
- {img:'img/moto.webp',tag:'Fiscalização / Vistoria técnica',title:'Fiscalização e vistoria',sub:'Rondas, inspeções, cadastros e levantamento de evidências.',go:'fiscalizacao'},
- {img:'img/atendimento.webp',tag:'Atendimento / Contact center',title:'Atendimento ao cidadão',sub:'Recepção de demandas, triagem, encaminhamento e retorno.',go:'atendimento'},
- {img:'img/conservacao-noite.webp',tag:'Conservação urbana / Zeladoria',title:'Conservação urbana',sub:'Apoio operacional, zeladoria e resposta rápida.',go:'conservacao'},
- {img:'img/cobertura.webp',tag:'Projeto AGIR / Inclusão social',title:'Agir no momento certo',sub:'Serviços essenciais que geram trabalho, renda e autonomia.',go:'empresa'},
- {img:'img/equipe.webp',tag:'Manutenção predial / Facilities',title:'Manutenção e facilities',sub:'Rotinas prediais e serviços continuados.',go:'manutencao-predial'}
+ {img:'centro-operacoes.webp',tag:'KISEN: estratégia em ação',title:'Da demanda ao resultado',sub:'Estruturamos, gerenciamos e mensuramos cada etapa da operação.',go:'solucoes'},
+ {img:'moto.webp',tag:'Fiscalização / Vistoria técnica',title:'Fiscalização e vistoria',sub:'Rondas, inspeções, cadastros e levantamento de evidências.',go:'fiscalizacao'},
+ {img:'atendimento.webp',tag:'Atendimento / Contact center',title:'Atendimento ao cidadão',sub:'Recepção de demandas, triagem, encaminhamento e retorno.',go:'atendimento'},
+ {img:'conservacao-noite.webp',tag:'Conservação urbana / Zeladoria',title:'Conservação urbana',sub:'Apoio operacional, zeladoria e resposta rápida.',go:'conservacao'},
+ {img:'cobertura.webp',tag:'Projeto AGIR / Inclusão social',title:'Agir no momento certo',sub:'Serviços essenciais que geram trabalho, renda e autonomia.',go:'empresa'},
+ {img:'equipe.webp',tag:'Manutenção predial / Facilities',title:'Manutenção e facilities',sub:'Rotinas prediais e serviços continuados.',go:'manutencao-predial'}
 ];
 
 const POSTS=[
- {id:'bpo-operacao-publica',cat:'Gestão',img:'img/centro-operacoes.webp',title:'BPO na operação pública: quando o parceiro assume de ponta a ponta',
+ {id:'bpo-operacao-publica',cat:'Gestão',img:'centro-operacoes.webp',title:'BPO na operação pública: quando o parceiro assume de ponta a ponta',
   dek:'Escopo definido, responsabilidades claras e gestão orientada por indicadores. Entenda o modelo e o que ele muda para o gestor.',
   body:[['p','Contratar mão de obra é diferente de contratar uma operação. No modelo de BPO (terceirização de processos), a KISEN assume o processo inteiro: da leitura da demanda até a prestação de contas, com indicadores que mostram se o serviço está acontecendo como combinado.'],['h','Quatro etapas'],
    ['ul',['Demanda: definição da necessidade, das prioridades e do resultado esperado.','Solução: a KISEN propõe o desenho operacional e o dimensionamento dos recursos.','Execução: mobilização de equipes, veículos, equipamentos e rotinas.','Controle: supervisão 360, evidências e indicadores dão visibilidade ao serviço.']],
    ['q','Resultado: um serviço estruturado, rastreável e mensurável.'],['h','O que muda para o gestor'],
    ['p','O gestor deixa de acompanhar pessoas e passa a acompanhar resultados. Em vez de perguntar se a equipe foi ao local, ele vê o registro da visita, com foto, horário e localização. Em vez de relatórios montados no fim do mês, consulta painéis atualizados durante a operação.'],
    ['p','Esse formato serve para operações públicas e privadas em que o serviço precisa ser controlado e avaliado: conservação urbana, vigilância, atendimento, manutenção e outras.']]},
- {id:'case-motos',cat:'Cases',img:'img/moto.webp',title:'Case: por que a moto é só parte da solução',
+ {id:'case-motos',cat:'Cases',img:'moto.webp',title:'Case: por que a moto é só parte da solução',
   dek:'Na nossa operação com motos, o valor está na organização e no controle do que acontece em campo.',
   body:[['p','Quando se fala em operação com motos, a atenção vai para o veículo. Agilidade no trânsito, acesso a ruas estreitas, resposta rápida. Tudo isso conta, mas não sustenta uma operação sozinho.'],['q','Mobilidade é uma parte da solução. O principal valor está na organização e no controle.'],['h','Como a operação é organizada'],
    ['ul',['Planejamento de rotas e prioridades.','Mobilização de profissionais e veículos.','Supervisão da execução em campo.','Registro das atividades e evidências.','Indicadores de produtividade e atendimento.']],
    ['p','Com esse ciclo, cada saída tem objetivo, cada atendimento tem registro e o contratante consegue avaliar produtividade e cobertura com dados, e não com impressões.']]},
- {id:'vigilancia-mensuravel',cat:'Segurança',img:'img/cobertura.webp',title:'Vigilância não armada com indicadores',
+ {id:'vigilancia-mensuravel',cat:'Segurança',img:'cobertura.webp',title:'Vigilância não armada com indicadores',
   dek:'Presença, rondas, ocorrências, SLA e qualidade: o que medir para ter uma segurança patrimonial 100% controlada.',
   body:[['p','Na vigilância patrimonial, o problema mais comum não é a falta de pessoas, é a falta de visibilidade. Sem registro, não há como saber se a ronda foi feita, em que horário, e o que foi encontrado.'],['h','Os quatro pilares da operação'],
    ['ul',['Controle de acesso: fluxos de pessoas, visitantes e prestadores.','Rondas preventivas: rotinas programadas e registros de passagem.','Ocorrências: comunicação, evidências e tratamento dos desvios.','Indicadores: presença, rondas, ocorrências, SLA e qualidade.']],
    ['p','Somando pessoas, processos, gestão e tecnologia, a operação diária deixa de depender de relatos e passa a ser acompanhada pelo KISEN 360.']]},
- {id:'rastreabilidade',cat:'Tecnologia',img:'img/kisen360.webp',title:'Rastreabilidade na prática: o que o KISEN 360 registra',
+ {id:'rastreabilidade',cat:'Tecnologia',img:'kisen360.webp',title:'Rastreabilidade na prática: o que o KISEN 360 registra',
   dek:'Ordens de serviço, rotas, fotos, horários e painéis. Como a tecnologia transforma execução em informação.',
   body:[['p','A gestão integrada só funciona se cada atividade deixar rastro. O KISEN 360 organiza a operação em ordens de serviço com prioridade, acompanha a localização das equipes e guarda a comprovação de cada execução.'],['h','Quatro benefícios'],
    ['ul',['Rastreabilidade: histórico de atividades, responsáveis, horários e evidências.','Padronização: rotinas claras e execução alinhada ao nível de serviço definido.','Produtividade: distribuição de demandas e acompanhamento da capacidade operacional.','Transparência gerencial: indicadores para avaliar desempenho, desvios e prioridades.']],
@@ -561,7 +561,7 @@ function benefits(){return `
 function aboutBlock(){return `
 <section>
   <div class="wrap split">
-    <div class="pic"><img src="img/frota.webp" alt="Base operacional KISEN com frota de caminhões"><span class="badge">Pessoas • Recursos • Tecnologia</span></div>
+    <div class="pic"><img src="frota.webp" alt="Base operacional KISEN com frota de caminhões"><span class="badge">Pessoas • Recursos • Tecnologia</span></div>
     <div class="stack">
       <span class="kicker">A empresa</span>
       <h2 class="title">Estratégia em ação</h2>
@@ -643,7 +643,7 @@ function k360Teaser(){return `
   </div>
 </section>`}
 
-function viewEmpresa(){return banner('img/frota.webp','Apresentação institucional','A empresa',[[null,'A empresa']])+aboutBlock()+agirBlock()+`
+function viewEmpresa(){return banner('frota.webp','Apresentação institucional','A empresa',[[null,'A empresa']])+aboutBlock()+agirBlock()+`
 <section class="alt">
   <div class="wrap center"><span class="kicker">BPO aplicado à operação pública</span><h2 class="title" style="margin-top:12px">Como trabalhamos</h2>
     <p class="lead" style="margin-top:18px">A KISEN assume a operação de ponta a ponta, com escopo definido, responsabilidades claras e gestão orientada por indicadores e resultados.</p></div>
@@ -666,7 +666,7 @@ function viewEmpresa(){return banner('img/frota.webp','Apresentação institucio
       <ul class="checks"><li>Planejamento de rotas e prioridades</li><li>Mobilização de profissionais e veículos</li><li>Supervisão da execução em campo</li><li>Registro das atividades e evidências</li><li>Indicadores de produtividade e atendimento</li></ul>
       <div><button class="btn btn-line" data-go="blog-case-motos">Leia o case ${ARROW}</button></div>
     </div>
-    <div class="pic"><img src="img/motos.webp" alt="Equipe de motociclistas KISEN em operação noturna"></div>
+    <div class="pic"><img src="motos.webp" alt="Equipe de motociclistas KISEN em operação noturna"></div>
   </div>
 </section>
 <section class="navy">
@@ -674,7 +674,7 @@ function viewEmpresa(){return banner('img/frota.webp','Apresentação institucio
   <p class="lead" style="margin-top:18px">Criar, aprimorar e transformar soluções para gerar mais eficiência e resultados. Onde está a oportunidade?</p></div>
 </section>`+cta()}
 
-function viewSolucoes(){return banner('img/conservacao-noite.webp','Gestão e execução de processos','Nossas soluções',[[null,'Nossas soluções']])+`
+function viewSolucoes(){return banner('conservacao-noite.webp','Gestão e execução de processos','Nossas soluções',[[null,'Nossas soluções']])+`
 <section>
   <div class="wrap center"><span class="kicker">Uma plataforma operacional</span><h2 class="title" style="margin-top:12px">Várias aplicações</h2>
   <p class="lead" style="margin-top:18px">Pessoas, recursos e tecnologia aplicados a diferentes desafios.</p></div>
@@ -702,7 +702,7 @@ function viewServico(id){const s=svcById[id];
   </div>
 </section>`+cta()}
 
-function viewDiferenciais(){return banner('img/equipe.webp','Inteligência operacional + gestão integrada','Diferenciais',[[null,'Diferenciais']])+stepsBlock()+benefits()+`
+function viewDiferenciais(){return banner('equipe.webp','Inteligência operacional + gestão integrada','Diferenciais',[[null,'Diferenciais']])+stepsBlock()+benefits()+`
 <section>
   <div class="wrap center"><span class="kicker">Nosso compromisso</span><h2 class="title" style="margin-top:12px">Critérios objetivos</h2>
   <p class="lead" style="margin-top:18px">Asseguramos ao cliente total transparência e rastreabilidade da execução, por meio de informações estruturadas e indicadores de performance com critérios objetivos.</p></div>
@@ -714,7 +714,7 @@ function viewK360(){const rows=[
  ['OS-0421','Apoio a ocorrência','Conservação urbana','08:03','3','run','Em execução'],
  ['OS-0423','Limpeza de ambiente','Facilities','08:20','1','run','Em execução'],
  ['OS-0426','Inspeção de rede de água','Saneamento','09:00','—','wait','Programada']];
- return banner('img/centro-operacoes.webp','Tecnologia','KISEN 360',[[null,'KISEN 360']])+`
+ return banner('centro-operacoes.webp','Tecnologia','KISEN 360',[[null,'KISEN 360']])+`
 <section class="navy">
   <div class="wrap k360-only">
     <div class="stack">
@@ -749,7 +749,7 @@ function postGrid(list){return `<div class="posts">${list.map(p=>`
 
 function viewBlog(){const cats=['Todos',...new Set(POSTS.map(p=>p.cat))];
  const list=POSTS.filter(p=>blogFilter==='Todos'||p.cat===blogFilter);
- return banner('img/centro-operacoes.webp','Operação, gestão e tecnologia','Blog',[[null,'Blog']])+`
+ return banner('centro-operacoes.webp','Operação, gestão e tecnologia','Blog',[[null,'Blog']])+`
 <section>
   <div class="wrap center"><p class="lead">Artigos sobre como estruturar, controlar e medir operações de serviço.</p>
     <div class="filters">${cats.map(c=>`<button data-filter="${c}" aria-pressed="${c===blogFilter}">${c}</button>`).join('')}</div></div>
@@ -768,7 +768,7 @@ function viewPost(id){const p=postById[id];
 </section>
 <section class="alt"><div class="wrap center"><span class="kicker">Leia também</span></div><div class="wrap">${postGrid(POSTS.filter(x=>x.id!==id).slice(0,3))}</div></section>`+cta()}
 
-function viewContato(){return banner('img/atendimento.webp','Fale com um especialista','Contato',[[null,'Contato']])+`
+function viewContato(){return banner('atendimento.webp','Fale com um especialista','Contato',[[null,'Contato']])+`
 <section>
   <div class="wrap contact">
     <div class="stack">
