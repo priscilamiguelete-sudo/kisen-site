@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="KISEN Soluções Técnicas e Operacionais: estratégia em ação.">
+<link rel="icon" type="image/svg+xml" href="img/logo.svg">
+<style>*{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>KISEN Soluções Operacionais</title>
+<style>
+/* Layout: corporate services site. Utility bar + transparent nav over a full-bleed photo slider with a curved base; white content sections; navy bands; orange is the brand signal. */
+:root{
+  --bg:#FFFFFF; --alt:#FFFFFF; --tint:#FFF4EC; --surface:#FFFFFF; --fg:#13283A; --muted:#5F707D; --line:#DCE4EA;
+  --navy:#12344A; --navy-2:#061B31; --util:#2E3B47; --on-navy:#EAF1F6; --on-navy-muted:#A3B4C1;
+  --orange:#FD6D36; --orange-ink:#D45400;
+  --f-display:Arial,Helvetica,sans-serif;
+  --f-body:Arial,Helvetica,sans-serif;
+  --wrap:1200px; --r:4px;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--f-body);font-weight:700;line-height:1.1;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+img,video{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:20px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.kicker{display:inline-block;font:600 13px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-ink)}
+.title{font-size:clamp(30px,4vw,44px);text-transform:uppercase;letter-spacing:.01em}
+.title::after{content:"";display:block;width:56px;height:4px;background:var(--orange);margin-top:16px}
+.center{text-align:center}
+.center .title::after{margin-inline:auto}
+.lead{font-size:19px;color:var(--muted);max-width:62ch}
+.center .lead{margin-inline:auto}
+.muted{color:var(--muted)}
+section{padding-block:80px}
+section.alt{background:var(--alt)}
+.navy{background:var(--navy);color:var(--on-navy)}
+.navy .lead,.navy .muted{color:var(--on-navy-muted)}
+.navy .kicker{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 14px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;padding:16px 26px;border-radius:var(--r);border:0;cursor:pointer;text-decoration:none}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:#E35900}
+.btn-outline{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.btn-outline:hover{background:#fff;color:var(--navy-2)}
+.btn-line{background:transparent;color:var(--orange-ink);box-shadow:inset 0 0 0 1.5px var(--orange)}
+.btn-line:hover{background:var(--orange);color:#fff}
+
+/* utility bar */
+.util{background:var(--util);color:#D5DEE5;font-size:14.5px}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px;flex-wrap:wrap}
+.util .ph{opacity:.75;font-style:italic}
+.social{display:flex;gap:14px}
+.social span{width:22px;height:22px;display:grid;place-items:center;color:#fff;opacity:.9}
+.social svg{width:20px;height:20px}
+@media (max-width:620px){.util .contact-line{font-size:13px}.social{display:none}}
+
+/* header */
+.header{position:absolute;left:0;right:0;z-index:30;color:#fff}
+.header .wrap{display:flex;align-items:center;gap:28px;padding-block:22px}
+.logo{display:flex;align-items:center;gap:12px;background:none;border:0;padding:0;cursor:pointer;color:#fff;flex:none}
+.logo img{height:46px;width:auto;display:block}
+@media (max-width:620px){.logo img{height:38px}}
+.logo .w{display:grid;line-height:.9;text-align:left}
+.logo b{font:700 34px/1 var(--f-display);letter-spacing:.06em}
+.logo small{font:500 11px/1.2 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:#C9D5DE;margin-top:4px}
+.menu{display:flex;align-items:center;gap:4px;margin-left:auto}
+.menu > li{list-style:none;position:relative}
+.menu{padding:0;margin-block:0}
+.menu .lnk{background:none;border:0;color:#fff;font:600 15px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:14px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.menu .lnk:hover,.menu .lnk[aria-current="true"]{color:#FFB27F}
+.menu .lnk svg{width:10px;height:10px}
+.drop{position:absolute;top:100%;left:0;min-width:300px;background:var(--surface);color:var(--fg);border-top:3px solid var(--orange);box-shadow:0 18px 40px -12px rgba(0,0,0,.35);padding:8px 0;display:none;z-index:40}
+.has-drop:hover .drop,.has-drop:focus-within .drop,.has-drop.open .drop{display:block}
+.drop button{display:block;width:100%;text-align:left;background:none;border:0;padding:11px 20px;font:500 15.5px/1.3 var(--f-body);cursor:pointer;color:var(--fg)}
+.drop button:hover{background:var(--alt);color:var(--orange-ink)}
+.menu .btn{margin-left:14px;padding:15px 22px;white-space:nowrap}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid rgba(255,255,255,.6);border-radius:var(--r);color:#fff;width:46px;height:42px;cursor:pointer}
+.burger svg{width:22px;height:22px;margin:auto}
+@media (max-width:1240px){
+  .burger{display:grid}
+  .menu{display:none;position:absolute;top:100%;left:12px;right:12px;flex-direction:column;align-items:stretch;gap:0;background:var(--navy-2);padding:10px;border-radius:var(--r);box-shadow:0 20px 40px -10px rgba(0,0,0,.5);max-height:75vh;overflow:auto}
+  .header.open .menu{display:flex}
+  .menu .lnk{width:100%;padding:14px 12px}
+  .drop{position:static;display:block;box-shadow:none;border:0;background:transparent;padding:0 0 6px 12px;min-width:0}
+  .drop button{color:#C9D5DE;padding:9px 12px;font-size:15px}
+  .drop button:hover{background:rgba(255,255,255,.06);color:#fff}
+  .menu .btn{margin:10px 0 4px;justify-content:center}
+}
+
+/* hero slider */
+.hero{position:relative;background:var(--navy-2);color:#fff;overflow:hidden;min-height:clamp(560px,86vh,780px);display:grid}
+.slide{grid-area:1/1;position:relative;display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s .9s}
+.slide.on{opacity:1;visibility:visible;transition:opacity .9s ease}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 7s ease}
+.slide.on img{transform:scale(1)}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,18,32,.78) 0%,rgba(6,27,49,.55) 45%,rgba(4,18,32,.7) 100%)}
+.slide .inner{position:relative;z-index:2;text-align:center;padding:160px 20px 150px;max-width:900px;display:grid;justify-items:center;gap:22px}
+.tag{display:inline-block;background:var(--orange);color:#fff;font:600 17px/1.25 var(--f-body);padding:8px 12px}
+.slide h1{font-size:clamp(36px,6vw,64px);text-transform:uppercase;letter-spacing:.01em;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.slide p.sub{font-size:19px;color:#D7E1E8;max-width:56ch}
+.more{background:none;border:0;color:#fff;font:600 17px/1 var(--f-body);cursor:pointer;display:grid;justify-items:center;gap:14px;margin-top:18px}
+.more svg{width:30px;height:18px;color:var(--orange);animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+.dots{position:absolute;z-index:3;bottom:120px;left:0;right:0;display:flex;justify-content:center;gap:10px}
+.dots button{width:34px;height:4px;border:0;background:rgba(255,255,255,.4);cursor:pointer;padding:0}
+.dots button[aria-current="true"]{background:var(--orange)}
+.wave{position:absolute;z-index:4;left:0;right:0;bottom:-1px;width:100%;height:110px;pointer-events:none}
+.wave .w1{fill:var(--line);opacity:.55}
+.wave .w2{fill:var(--bg)}
+@media (max-width:620px){.slide .inner{padding:150px 20px 140px}.tag{font-size:15px}.wave{height:60px}.dots{bottom:76px}}
+
+/* page banner (inner pages) */
+.banner{position:relative;background:var(--navy-2);color:#fff;overflow:hidden}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,18,32,.82),rgba(6,27,49,.62))}
+.banner .inner{position:relative;z-index:2;text-align:center;padding:180px 20px 130px;display:grid;justify-items:center;gap:18px}
+.banner h1{font-size:clamp(34px,5vw,56px);text-transform:uppercase}
+.crumb{font-size:14px;color:#C9D5DE;letter-spacing:.06em}
+.crumb button{background:none;border:0;padding:0;color:#fff;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:620px){.banner .inner{padding:150px 20px 90px}}
+
+/* about */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split > *{min-width:0}
+.split .pic{position:relative}
+.split .pic img{width:100%;aspect-ratio:4/3.4;object-fit:cover;border-radius:var(--r)}
+.split .pic .badge{position:absolute;right:-14px;bottom:-14px;background:var(--orange);color:#fff;padding:18px 22px;max-width:240px;font:700 20px/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.03em}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:36px}.split .pic .badge{right:10px;bottom:10px}}
+.stack{display:grid;gap:20px;align-content:start}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.checks li{display:grid;grid-template-columns:24px 1fr;gap:10px}
+.checks li::before{content:"";width:18px;height:18px;margin-top:4px;border-radius:50%;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center/12px no-repeat}
+
+.agir{background:#fff;border:1px solid var(--line);border-top:4px solid var(--orange);border-radius:var(--r);padding:32px;display:grid;gap:14px}
+.agir h3{font-size:26px;text-transform:uppercase;color:var(--navy)}
+/* solutions cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;margin-top:48px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:grid;grid-template-rows:auto 1fr;text-align:left;padding:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(16,41,61,.45)}
+.card .ph{position:relative;aspect-ratio:16/10;background:var(--navy);overflow:visible}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .ph.plain{display:grid;place-items:center;background:repeating-linear-gradient(135deg,transparent 0 20px,rgba(255,255,255,.04) 20px 21px),var(--navy)}
+.card .ph.plain svg{width:64px;height:64px;color:var(--orange)}
+.card .ic{position:absolute;left:18px;bottom:-22px;width:48px;height:48px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;z-index:2;box-shadow:0 0 0 4px var(--surface)}
+.card .ic svg{width:24px;height:24px}
+.card .ph + .body{padding-top:36px}
+.card .body{padding:22px;display:grid;gap:10px;align-content:start}
+.card h3{font-size:20px;text-transform:uppercase;letter-spacing:.02em}
+.card p{font-size:15.5px;color:var(--muted)}
+.card .go{font:600 13px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--orange-ink);margin-top:6px}
+
+/* steps + benefits */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;margin-top:48px;counter-reset:s}
+.step{display:grid;gap:10px;align-content:start;text-align:center;justify-items:center}
+.step .n{width:64px;height:64px;border-radius:50%;border:2px solid var(--orange);display:grid;place-items:center;font:700 24px/1 var(--f-display);color:var(--orange)}
+.step h3{font-size:20px;text-transform:uppercase;letter-spacing:.04em}
+.step p{font-size:15px;color:var(--on-navy-muted)}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+.formula{margin-top:44px;text-align:center;font:700 22px/1.3 var(--f-display);letter-spacing:.04em;text-transform:uppercase}
+.formula i{font-style:normal;color:var(--orange);padding-inline:6px}
+.bens{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:48px}
+.ben{background:var(--surface);border:1px solid var(--line);border-bottom:4px solid var(--orange);border-radius:var(--r);padding:26px 22px;display:grid;gap:10px;align-content:start}
+.ben svg{width:36px;height:36px;color:var(--orange-ink)}
+.ben h3{font-size:20px;text-transform:uppercase}
+.ben p{font-size:15.5px;color:var(--muted)}
+@media (max-width:900px){.bens{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.bens{grid-template-columns:1fr}}
+
+/* BPO flow */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding:0;margin:48px 0 0;counter-reset:f}
+.flow li{list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;display:grid;gap:10px;align-content:start}
+.flow li::before{counter-increment:f;content:counter(f,decimal-leading-zero);font:700 34px/1 var(--f-display);color:var(--orange)}
+.flow h3{font-size:22px;text-transform:uppercase}
+.flow p{font-size:15.5px;color:var(--muted)}
+@media (max-width:900px){.flow{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.flow{grid-template-columns:1fr}}
+.result{margin:32px auto 0;max-width:860px;text-align:center;font-size:19px;padding:22px;border:1.5px dashed var(--orange)}
+
+/* service detail */
+.svc-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:start}
+@media (max-width:960px){.svc-layout{grid-template-columns:1fr}}
+.svc-main{display:grid;gap:44px}
+.svc-main .media{border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:var(--navy);position:relative}
+.svc-main .media img,.svc-main .media video{width:100%;height:100%;object-fit:cover}
+.svc-main .media.plain{display:grid;place-items:center;background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(255,255,255,.04) 22px 23px),var(--navy)}
+.svc-main .media.plain svg{width:110px;height:110px;color:var(--orange)}
+.svc-main h2{font-size:26px;text-transform:uppercase;margin-bottom:18px}
+.deliver{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.deliver div{background:var(--alt);border-left:4px solid var(--orange);padding:18px 20px;display:grid;gap:6px}
+.deliver h3{font-size:18px;text-transform:uppercase}
+.deliver p{font-size:15.5px;color:var(--muted)}
+@media (max-width:620px){.deliver{grid-template-columns:1fr}}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font:600 14px/1 var(--f-body);padding:10px 14px;border-radius:999px;background:var(--alt);border:1px solid var(--line)}
+.pill.kpi{background:transparent;border-color:var(--orange);color:var(--orange-ink)}
+.side{position:sticky;top:20px;display:grid;gap:20px}
+.side .box{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.side .box h4{background:var(--navy);color:#fff;font-size:15px;letter-spacing:.1em;text-transform:uppercase;padding:16px 20px}
+.side .box button{display:flex;justify-content:space-between;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:13px 20px;font:500 15.5px/1.3 var(--f-body);cursor:pointer;color:var(--fg)}
+.side .box button:last-child{border-bottom:0}
+.side .box button:hover,.side .box button[aria-current="true"]{color:var(--orange-ink);background:var(--alt)}
+.side .box button[aria-current="true"]{box-shadow:inset 4px 0 0 var(--orange)}
+.side .quote{background:var(--orange);color:#fff;padding:26px 22px;border-radius:var(--r);display:grid;gap:14px}
+.side .quote h4{font-size:22px;text-transform:uppercase}
+.side .quote .btn{background:#fff;color:var(--orange-ink);justify-content:center}
+@media (max-width:960px){.side{position:static}}
+
+/* KISEN 360 */
+.os{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:40px}
+.os-head{display:flex;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);font:600 13px/1.2 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);flex-wrap:wrap}
+.os-scroll{overflow-x:auto}
+.os table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+.os th,.os td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+.os th{font:600 12px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--alt)}
+.os td.num{font-variant-numeric:tabular-nums}
+.st{display:inline-flex;align-items:center;gap:7px;font:600 13px/1 var(--f-body);padding:6px 10px;border-radius:999px}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st.ok{color:#1d8a52;background:rgba(29,138,82,.12)}
+.st.run{color:var(--orange-ink);background:rgba(255,101,0,.12)}
+.st.wait{color:var(--muted);background:var(--alt)}
+.feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.feat div{display:grid;gap:6px;border-top:2px solid var(--orange);padding-top:14px}
+.feat h3{font-size:19px;text-transform:uppercase}
+.feat p{font-size:15.5px;color:var(--on-navy-muted)}
+@media (max-width:480px){.feat{grid-template-columns:1fr}}
+
+/* blog */
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;margin-top:48px}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:grid;grid-template-rows:auto 1fr;text-align:left;padding:0;cursor:pointer}
+.post img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .4s}
+.post .imgw{overflow:hidden}
+.post:hover img{transform:scale(1.04)}
+.post .body{padding:22px;display:grid;gap:10px;align-content:start}
+.post .cat{font:600 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-ink)}
+.post h3{font-size:21px;line-height:1.2}
+.post:hover h3{color:var(--orange-ink)}
+.post p{font-size:15.5px;color:var(--muted)}
+.post .rd{font:600 13px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--orange-ink);margin-top:6px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+.filters button{font:600 14px/1 var(--f-body);padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--orange);color:#fff;border-color:var(--orange)}
+.article{max-width:760px;margin:0 auto}
+.article .dek{font-size:21px;color:var(--muted);line-height:1.5}
+.article img{width:100%;border-radius:var(--r);margin:32px 0;aspect-ratio:16/9;object-fit:cover}
+.article .content{display:grid;gap:20px;font-size:18px;line-height:1.75}
+.article .content h2{font-size:26px;text-transform:uppercase;margin-top:12px}
+.article .content ul{margin:0;padding-left:22px;display:grid;gap:8px}
+.article .content blockquote{margin:6px 0;padding:16px 22px;border-left:4px solid var(--orange);background:var(--alt);font:700 24px/1.25 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+
+/* CTA band */
+.cta-band{background:var(--orange);color:#fff;padding-block:48px}
+.cta-band .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta-band h2{font-size:clamp(26px,3.4vw,38px);text-transform:uppercase}
+.cta-band p{color:#FFE6D5;margin-top:6px}
+.cta-band .btn{background:var(--navy-2);color:#fff}
+.cta-band .btn:hover{background:#000}
+
+/* contact */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+@media (max-width:900px){.contact{grid-template-columns:1fr}}
+.info{display:grid;gap:18px}
+.info .row{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:center}
+.info .row span:first-child{width:48px;height:48px;border-radius:50%;background:var(--alt);display:grid;place-items:center;color:var(--orange-ink)}
+.info .row svg{width:22px;height:22px}
+.info .row b{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.info .row .ph{color:var(--muted);font-style:italic}
+form.quote{background:var(--alt);padding:32px;border-radius:var(--r);display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form.quote h3{grid-column:1/-1;font-size:24px;text-transform:uppercase}
+form.quote label{display:grid;gap:6px;font:600 13px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+form.quote .full{grid-column:1/-1}
+form.quote input,form.quote select,form.quote textarea{font:400 16px/1.4 var(--f-body);color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:13px 14px;width:100%}
+form.quote textarea{min-height:120px;resize:vertical}
+form.quote .btn{justify-self:start}
+form.quote .note{grid-column:1/-1;font-size:14.5px;color:var(--muted)}
+.notice{grid-column:1/-1;padding:14px 16px;border-left:4px solid var(--orange);background:var(--surface);font-size:15.5px}
+@media (max-width:560px){form.quote{grid-template-columns:1fr;padding:22px}}
+
+/* footer */
+footer{background:var(--navy-2);color:#A3B4C1;font-size:15px}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding-block:64px 40px}
+footer h4{color:#fff;font-size:15px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer ul button{background:none;border:0;padding:0;color:#A3B4C1;cursor:pointer;text-align:left}
+footer ul button:hover{color:#fff}
+footer .ph{font-style:italic;opacity:.8}
+footer .bottom{border-top:1px solid rgba(255,255,255,.08);padding-block:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:14px}
+@media (max-width:900px){footer .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer .cols{grid-template-columns:1fr}}
+
+/* floating quote */
+.float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:12px 18px 12px 12px;font:700 14px/1.1 var(--f-body);text-align:left;cursor:pointer;box-shadow:0 12px 30px -8px rgba(0,0,0,.45)}
+.float span.i{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--orange);display:grid;place-items:center}
+.float svg{width:22px;height:22px}
+@media (max-width:520px){.float .t{display:none}.float{padding:10px}}
+
+.view{animation:in .35s ease both}
+@keyframes in{from{opacity:.5}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* White site: logo colours only in details */
+:root{color-scheme:light}
+section.alt{border-top:1px solid var(--line)}
+.navy{background:#fff;color:var(--fg);border-top:1px solid var(--line)}
+.navy .lead,.navy .muted,.step p,.feat p{color:var(--muted)}
+.navy .kicker{color:var(--orange-ink)}
+.step .n{background:#fff;color:var(--navy)}
+.step h3{color:var(--navy)}
+.feat div{border-top-color:var(--orange)}
+.util{background:#fff;color:var(--navy);border-bottom:3px solid var(--orange)}
+.social span{color:var(--navy)}
+.deliver div{background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange)}
+.pill{background:#fff}
+.filters button:hover,.side .box button:hover,.side .box button[aria-current="true"]{background:var(--tint)}
+.drop button:hover{background:var(--tint)}
+.article .content blockquote{background:var(--tint)}
+.cta-band{background:#fff;color:var(--navy);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cta-band .wrap{border-left:6px solid var(--orange);padding-left:28px}
+.cta-band p{color:var(--muted)}
+.cta-band .btn{background:var(--orange);color:#fff}
+.cta-band .btn:hover{background:#E35900}
+form.quote{background:#fff;border:1px solid var(--line);border-top:4px solid var(--orange)}
+.info .row span:first-child{background:var(--tint)}
+.os th{background:var(--tint)}
+footer{background:#fff;color:var(--muted);border-top:4px solid var(--orange)}
+footer h4{color:var(--navy)}
+footer ul button{color:var(--muted)}
+footer ul button:hover{color:var(--orange-ink)}
+footer .bottom{border-top:1px solid var(--line)}
+footer .brandname{color:var(--navy)!important}
+
+/* White header so the logo shows in its original colours */
+.header{position:sticky;top:env(safe-area-inset-top,0px);background:#fff;color:var(--navy);box-shadow:0 6px 20px -14px rgba(18,52,74,.45)}
+.header .wrap{padding-block:16px}
+.menu .lnk{color:var(--navy)}
+.menu .lnk:hover,.menu .lnk[aria-current="true"]{color:var(--orange-ink)}
+.menu .btn-outline{background:var(--orange);color:#fff;box-shadow:none}
+.menu .btn-outline:hover{background:#E35900;color:#fff}
+.burger{border-color:var(--line);color:var(--navy)}
+.slide .inner{padding:90px 20px 150px}
+.hero{min-height:clamp(500px,74vh,700px)}
+.banner .inner{padding:90px 20px 120px}
+@media (max-width:1240px){
+  .menu{background:#fff;border:1px solid var(--line)}
+  .menu .lnk{color:var(--navy)}
+  .drop button{color:var(--muted)}
+  .drop button:hover{background:var(--tint);color:var(--orange-ink)}
+}
+@media (max-width:620px){.slide .inner{padding:70px 20px 120px}.banner .inner{padding:70px 20px 80px}}
+.k360-only{display:grid}
+.k360-only .stack{max-width:none}
+.k360-only .checks{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 32px}
+.k360-only .feat{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+</style>
+
+</head>
+<body>
+<div class="util">
+  <div class="wrap">
+    <div class="contact-line"><span class="ph">(00) 0000-0000</span> &nbsp;/&nbsp; <span>contato@kisen.com.br</span></div>
+    <div class="social" aria-label="Redes sociais">
+      <span title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.2-1.2-.2-.2-.5-.3z"/></svg></span>
+      <span title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 00-2 2v16a2 2 0 002 2h8.6v-7h-2.4v-2.7h2.4v-2c0-2.4 1.5-3.7 3.6-3.7l2.2.1v2.5h-1.5c-1.2 0-1.4.6-1.4 1.4v1.7h2.8l-.4 2.7h-2.4v7H20a2 2 0 002-2V4a2 2 0 00-2-2z"/></svg></span>
+      <span title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+      <span title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 00-2 2v16a2 2 0 002 2h16a2 2 0 002-2V4a2 2 0 00-2-2zM8 19H5V9h3zM6.5 7.7a1.7 1.7 0 110-3.5 1.7 1.7 0 010 3.5zM19 19h-3v-4.9c0-1.2 0-2.7-1.6-2.7S12.5 12.6 12.5 14V19h-3V9h2.9v1.4a3.2 3.2 0 012.9-1.6c3 0 3.6 2 3.6 4.6z"/></svg></span>
+    </div>
+  </div>
+</div>
+
+<header class="header" id="hdr">
+  <div class="wrap" style="position:relative">
+    <button class="logo" data-go="inicio" aria-label="KISEN, página inicial"><img src="img/logo.svg" alt="KISEN" width="208" height="46"></button>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <ul class="menu" id="menu">
+      <li><button class="lnk" data-go="empresa" data-sec="empresa">A empresa</button></li>
+      <li class="has-drop"><button class="lnk" data-go="solucoes" data-sec="solucoes" aria-haspopup="true">Nossas soluções <svg viewBox="0 0 10 10"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <div class="drop" id="drop"></div></li>
+      <li><button class="lnk" data-go="diferenciais" data-sec="diferenciais">Diferenciais</button></li>
+      <li><button class="lnk" data-go="kisen360" data-sec="kisen360">KISEN 360</button></li>
+      <li><button class="lnk" data-go="blog" data-sec="blog">Blog</button></li>
+      <li><button class="lnk" data-go="contato" data-sec="contato">Contato</button></li>
+      <li><button class="btn btn-outline" data-go="contato">Solicitar cotação</button></li>
+    </ul>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <img src="img/logo.svg" alt="KISEN" width="180" height="40" style="margin-bottom:18px">
+      <p>Soluções técnicas e operacionais. Da demanda ao resultado: estruturamos, gerenciamos e mensuramos cada etapa da operação.</p>
+    </div>
+    <div><h4>Soluções</h4><ul id="f-svc"></ul></div>
+    <div><h4>Institucional</h4><ul>
+      <li><button data-go="empresa">A empresa</button></li><li><button data-go="diferenciais">Diferenciais</button></li><li><button data-go="kisen360">KISEN 360</button></li><li><button data-go="blog">Blog</button></li><li><button data-go="contato">Contato</button></li></ul></div>
+    <div><h4>Contato</h4><ul>
+      <li class="ph">(00) 0000-0000</li><li>contato@kisen.com.br</li><li>Segunda a sexta</li><li class="ph">Endereço a inserir</li>
+      <li style="margin-top:8px"><button class="btn btn-primary" data-go="contato" style="color:#fff;padding:13px 18px">Solicitar cotação</button></li></ul></div>
+  </div>
+  <div class="wrap bottom"><span>© KISEN Soluções Técnicas e Operacionais</span><span>Estratégia em Ação</span></div>
+</footer>
+
+<button class="float" data-go="contato" aria-label="Peça seu orçamento"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><span class="t">Peça seu<br>orçamento</span></button>
+
+<script>
+const ARROW='<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+const CHEV='<svg viewBox="0 0 30 18" aria-hidden="true"><path d="M3 3l12 12L27 3" fill="none" stroke="currentColor" stroke-width="3"/></svg>';
+const WAVE='<svg class="wave" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path class="w1" d="M0 20 C 360 110, 900 110, 1440 30 L1440 110 L0 110Z"/><path class="w2" d="M0 50 C 380 120, 980 100, 1440 50 L1440 110 L0 110Z"/></svg>';
+const IC={
+ shield:'<path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
+ cup:'<path d="M4 8h12v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M16 10h2a2 2 0 010 4h-2M7 3v2M11 3v2"/>',
+ moto:'<circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/><path d="M6 16l4-6h5l3 6M13 6h3l2 4"/>',
+ tree:'<path d="M12 21v-6M7 15h10l-5-11z"/>',
+ bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0012 3z"/>',
+ drop:'<path d="M12 3s6 7 6 11a6 6 0 01-12 0c0-4 6-11 6-11z"/>',
+ clip:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/>',
+ wrench:'<path d="M14.5 5.5a4 4 0 00-5 5L4 16l4 4 5.5-5.5a4 4 0 005-5l-2.5 2.5-2.5-.5-.5-2.5z"/>',
+ building:'<rect x="4" y="3" width="16" height="18"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M11 21v-3h2v3"/>',
+ bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+ doc:'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/>',
+ coin:'<circle cx="12" cy="12" r="9"/><path d="M14.5 9.5c-.4-1-1.4-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1.2 0-2.2-.6-2.6-1.5M12 6.5V8M12 16v1.5"/>',
+ headset:'<path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="13" width="4" height="6" rx="1"/><rect x="17" y="13" width="4" height="6" rx="1"/><path d="M19 19c0 1.5-2 2-5 2"/>',
+ track:'<path d="M4 19V5M4 19h16"/><path d="M7 15l4-4 3 3 5-6"/>',
+ list:'<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>',
+ gauge:'<path d="M4 18a8 8 0 1116 0"/><path d="M12 18l4-6"/>',
+ eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+ phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/>',
+ mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ pin:'<path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/>'
+};
+const svg=(k,cls='')=>`<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${IC[k]}</svg>`;
+const CONTROL=['Ordens de serviço e prioridades','Rotas e localização das equipes','Fotos, horários e comprovação','Painéis e relatórios gerenciais'];
+
+const SERVICES=[
+ {id:'fiscalizacao',ic:'clip',nome:'Fiscalização e vistoria',curto:'Rondas, inspeções, cadastros e levantamento de evidências.',img:'img/cobertura.webp',tag:'Fiscalização / Vistoria técnica',
+  lead:'Rondas, inspeções, cadastros e levantamento de evidências. Informação de campo organizada para apoiar decisões, com registro padronizado e rastreável.',
+  entregas:[['Rondas','Percursos programados com registro de passagem.'],['Inspeções','Checklists padronizados por tipo de vistoria.'],['Cadastros','Levantamento estruturado de imóveis, equipamentos ou áreas.'],['Evidências','Fotos, horários e localização anexados a cada registro.']],
+  rotina:['Checklist','Registro','Evidência','Relatório'],kpis:['Vistorias realizadas','Conformidade','Prazo de entrega dos laudos']},
+ {id:'conservacao',ic:'tree',nome:'Conservação urbana',curto:'Apoio a ocorrências, zeladoria e serviços em campo.',img:'img/conservacao-noite.webp',tag:'Conservação urbana / Zeladoria',
+  lead:'Apoio operacional, zeladoria e resposta rápida. Equipes mobilizadas para atuar em ocorrências e serviços de campo, com registro e acompanhamento de cada atendimento.',
+  entregas:[['Apoio a ocorrências','Resposta e isolamento de áreas com sinalização adequada.'],['Zeladoria','Rotinas de conservação de espaços e equipamentos públicos.'],['Serviços em campo','Execução programada ou sob demanda, com equipes e veículos.'],['Registro','Cada atendimento documentado para controle do contratante.']],
+  rotina:['Pessoas','Recursos','Tecnologia'],kpis:['Tempo de resposta','Ocorrências encerradas','Serviços executados','Evidências registradas']},
+ {id:'iluminacao',ic:'bulb',nome:'Iluminação pública',curto:'Vistoria, registro de falhas e apoio à manutenção leve.',img:'img/motos.webp',tag:'Iluminação pública / Vistoria',
+  lead:'Vistoria da rede, registro de falhas e apoio à manutenção leve. A operação identifica pontos com problema, documenta e encaminha, para que a manutenção atue com prioridade e informação correta.',
+  entregas:[['Vistoria','Inspeção programada por rota e por região.'],['Registro de falhas','Pontos apagados ou danificados com foto, horário e localização.'],['Apoio à manutenção leve','Suporte operacional às equipes de manutenção.'],['Relatórios','Histórico por ponto e por região para planejamento.']],
+  rotina:['Rotas','Vistoria','Registro','Encaminhamento'],kpis:['Pontos vistoriados','Falhas registradas','Tempo até o encaminhamento']},
+ {id:'saneamento',ic:'drop',nome:'Saneamento',curto:'Cadastro, inspeção, leitura, comunicação e apoio operacional.',img:'img/manutencao.webp',tag:'Saneamento / Redes de água potável',
+  lead:'Cuidado especializado em redes de água potável, da instalação de sistemas de distribuição ao apoio operacional em campo. A KISEN estrutura equipes para cadastro, inspeção, leitura e comunicação, com dados confiáveis para a rotina do saneamento.',
+  entregas:[['Redes de água potável','Manutenção e instalação de sistemas de distribuição de água.'],['Cadastro','Levantamento e atualização de informações em campo.'],['Inspeção','Verificação de instalações e registro de não conformidades.'],['Leitura','Rotinas de leitura com comprovação.'],['Comunicação','Contato com usuários e apoio às ações operacionais.'],['Apoio operacional','Equipes de campo para as demandas do dia a dia da operação.']],
+  rotina:['Cadastro','Inspeção','Leitura','Comunicação'],kpis:['Cadastros realizados','Inspeções concluídas','Leituras por rota','Não conformidades']},
+ {id:'manutencao-predial',ic:'wrench',nome:'Manutenção predial',curto:'Rotinas preventivas, corretivas leves e acompanhamento.',img:'img/equipe.webp',tag:'Manutenção predial / Rotinas',
+  lead:'Rotinas preventivas, corretivas leves e acompanhamento. Serviços continuados que mantêm o prédio funcionando, com plano, registro e histórico de cada intervenção.',
+  entregas:[['Preventiva','Calendário de rotinas por sistema e por ambiente.'],['Corretiva leve','Atendimento a chamados com priorização.'],['Acompanhamento','Supervisão dos serviços e das condições do prédio.'],['Histórico','Registro de intervenções para planejamento e auditoria.']],
+  rotina:['Plano','Chamados','Supervisão','Histórico'],kpis:['Preventivas cumpridas','Chamados atendidos no prazo','Reincidência']},
+ {id:'atendimento',ic:'headset',nome:'Atendimento ao cidadão',curto:'Recepção de demandas, triagem, encaminhamento e retorno.',img:'img/atendimento.webp',tag:'Atendimento / Contact center',
+  lead:'Central de apoio, cadastro e controle. Recebemos as demandas, fazemos a triagem, encaminhamos para a equipe certa e damos retorno, com cada atendimento registrado.',
+  entregas:[['Recepção de demandas','Atendimento presencial, telefônico e digital.'],['Triagem','Classificação por tipo e prioridade.'],['Encaminhamento','Envio à equipe responsável, inclusive equipes de campo.'],['Retorno','Fechamento do ciclo com quem abriu a demanda.']],
+  rotina:['Recepção','Triagem','Encaminhamento','Retorno'],kpis:['Tempo de atendimento','Demandas resolvidas','Retorno ao solicitante']},
+ {id:'vigilancia',ic:'shield',nome:'Vigilância não armada',curto:'Controle de acesso, rondas preventivas e registro de ocorrências.',img:'img/centro-operacoes.webp',tag:'Vigilância / Segurança patrimonial',
+  lead:'Operação diária de segurança patrimonial, 100% controlada e mensurável. A KISEN combina pessoas, processos, gestão e tecnologia para proteger o patrimônio com rotina definida e evidência de cada passagem.',
+  entregas:[['Controle de acesso','Fluxos de pessoas, visitantes e prestadores.'],['Rondas preventivas','Rotinas programadas e registros de passagem.'],['Ocorrências','Comunicação, evidências e tratamento dos desvios.'],['Indicadores','Presença, rondas, ocorrências, SLA e qualidade.']],
+  rotina:['+ Pessoas','+ Processos','+ Gestão','+ Tecnologia'],kpis:['Presença no posto','Rondas cumpridas','Ocorrências tratadas','SLA','Qualidade']},
+ {id:'facilities',ic:'building',nome:'Facilities',curto:'Hospitalidade, limpeza e organização.',img:'img/frota.webp',tag:'Gestão de facilities',
+  lead:'Hospitalidade, limpeza e organização: recepção, portaria e limpeza especializada, com respeito, profissionalismo e atenção à inclusão social. A KISEN integra os serviços de apoio do ambiente em uma única gestão, com rotina definida e indicadores de qualidade.',
+  entregas:[['Recepção','Atendimento e apoio a pessoas, visitantes e eventos.'],['Portaria','Controle de entrada e saída com registro.'],['Limpeza especializada','Rotinas por ambiente, com checklist e supervisão.'],['Organização','Espaços prontos para uso e insumos sob controle.'],['Gestão integrada','Um único ponto de contato e um único painel de acompanhamento.']],
+  rotina:['Rotina definida','Supervisão','Checklist','Indicadores'],kpis:['Qualidade percebida','Checklists cumpridos','Consumo de insumos']}
+];
+
+const SLIDES=[
+ {img:'img/centro-operacoes.webp',tag:'KISEN: estratégia em ação',title:'Da demanda ao resultado',sub:'Estruturamos, gerenciamos e mensuramos cada etapa da operação.',go:'solucoes'},
+ {img:'img/moto.webp',tag:'Fiscalização / Vistoria técnica',title:'Fiscalização e vistoria',sub:'Rondas, inspeções, cadastros e levantamento de evidências.',go:'fiscalizacao'},
+ {img:'img/atendimento.webp',tag:'Atendimento / Contact center',title:'Atendimento ao cidadão',sub:'Recepção de demandas, triagem, encaminhamento e retorno.',go:'atendimento'},
+ {img:'img/conservacao-noite.webp',tag:'Conservação urbana / Zeladoria',title:'Conservação urbana',sub:'Apoio operacional, zeladoria e resposta rápida.',go:'conservacao'},
+ {img:'img/cobertura.webp',tag:'Projeto AGIR / Inclusão social',title:'Agir no momento certo',sub:'Serviços essenciais que geram trabalho, renda e autonomia.',go:'empresa'},
+ {img:'img/equipe.webp',tag:'Manutenção predial / Facilities',title:'Manutenção e facilities',sub:'Rotinas prediais e serviços continuados.',go:'manutencao-predial'}
+];
+
+const POSTS=[
+ {id:'bpo-operacao-publica',cat:'Gestão',img:'img/centro-operacoes.webp',title:'BPO na operação pública: quando o parceiro assume de ponta a ponta',
+  dek:'Escopo definido, responsabilidades claras e gestão orientada por indicadores. Entenda o modelo e o que ele muda para o gestor.',
+  body:[['p','Contratar mão de obra é diferente de contratar uma operação. No modelo de BPO (terceirização de processos), a KISEN assume o processo inteiro: da leitura da demanda até a prestação de contas, com indicadores que mostram se o serviço está acontecendo como combinado.'],['h','Quatro etapas'],
+   ['ul',['Demanda: definição da necessidade, das prioridades e do resultado esperado.','Solução: a KISEN propõe o desenho operacional e o dimensionamento dos recursos.','Execução: mobilização de equipes, veículos, equipamentos e rotinas.','Controle: supervisão 360, evidências e indicadores dão visibilidade ao serviço.']],
+   ['q','Resultado: um serviço estruturado, rastreável e mensurável.'],['h','O que muda para o gestor'],
+   ['p','O gestor deixa de acompanhar pessoas e passa a acompanhar resultados. Em vez de perguntar se a equipe foi ao local, ele vê o registro da visita, com foto, horário e localização. Em vez de relatórios montados no fim do mês, consulta painéis atualizados durante a operação.'],
+   ['p','Esse formato serve para operações públicas e privadas em que o serviço precisa ser controlado e avaliado: conservação urbana, vigilância, atendimento, manutenção e outras.']]},
+ {id:'case-motos',cat:'Cases',img:'img/moto.webp',title:'Case: por que a moto é só parte da solução',
+  dek:'Na nossa operação com motos, o valor está na organização e no controle do que acontece em campo.',
+  body:[['p','Quando se fala em operação com motos, a atenção vai para o veículo. Agilidade no trânsito, acesso a ruas estreitas, resposta rápida. Tudo isso conta, mas não sustenta uma operação sozinho.'],['q','Mobilidade é uma parte da solução. O principal valor está na organização e no controle.'],['h','Como a operação é organizada'],
+   ['ul',['Planejamento de rotas e prioridades.','Mobilização de profissionais e veículos.','Supervisão da execução em campo.','Registro das atividades e evidências.','Indicadores de produtividade e atendimento.']],
+   ['p','Com esse ciclo, cada saída tem objetivo, cada atendimento tem registro e o contratante consegue avaliar produtividade e cobertura com dados, e não com impressões.']]},
+ {id:'vigilancia-mensuravel',cat:'Segurança',img:'img/cobertura.webp',title:'Vigilância não armada com indicadores',
+  dek:'Presença, rondas, ocorrências, SLA e qualidade: o que medir para ter uma segurança patrimonial 100% controlada.',
+  body:[['p','Na vigilância patrimonial, o problema mais comum não é a falta de pessoas, é a falta de visibilidade. Sem registro, não há como saber se a ronda foi feita, em que horário, e o que foi encontrado.'],['h','Os quatro pilares da operação'],
+   ['ul',['Controle de acesso: fluxos de pessoas, visitantes e prestadores.','Rondas preventivas: rotinas programadas e registros de passagem.','Ocorrências: comunicação, evidências e tratamento dos desvios.','Indicadores: presença, rondas, ocorrências, SLA e qualidade.']],
+   ['p','Somando pessoas, processos, gestão e tecnologia, a operação diária deixa de depender de relatos e passa a ser acompanhada pelo KISEN 360.']]},
+ {id:'rastreabilidade',cat:'Tecnologia',img:'img/kisen360.webp',title:'Rastreabilidade na prática: o que o KISEN 360 registra',
+  dek:'Ordens de serviço, rotas, fotos, horários e painéis. Como a tecnologia transforma execução em informação.',
+  body:[['p','A gestão integrada só funciona se cada atividade deixar rastro. O KISEN 360 organiza a operação em ordens de serviço com prioridade, acompanha a localização das equipes e guarda a comprovação de cada execução.'],['h','Quatro benefícios'],
+   ['ul',['Rastreabilidade: histórico de atividades, responsáveis, horários e evidências.','Padronização: rotinas claras e execução alinhada ao nível de serviço definido.','Produtividade: distribuição de demandas e acompanhamento da capacidade operacional.','Transparência gerencial: indicadores para avaliar desempenho, desvios e prioridades.']],
+   ['q','Gestão inteligente transformando eficiência operacional em resultados mensuráveis.']]}
+];
+
+const app=document.getElementById('app');
+const svcById=Object.fromEntries(SERVICES.map(s=>[s.id,s]));
+const postById=Object.fromEntries(POSTS.map(p=>[p.id,p]));
+let blogFilter='Todos', timer=null;
+
+function banner(img,tag,title,crumbs){return `
+<section class="banner" style="padding:0">
+  ${img?`<img src="${img}" alt="">`:''}
+  <div class="inner">${tag?`<span class="tag">${tag}</span>`:''}<h1>${title}</h1>
+    <p class="crumb"><button data-go="inicio">Início</button>${crumbs.map(c=>c[0]?` / <button data-go="${c[0]}">${c[1]}</button>`:` / ${c[1]}`).join('')}</p></div>
+  ${WAVE}
+</section>`}
+
+function cta(){return `<div class="cta-band"><div class="wrap"><div><h2>Dê a demanda e a KISEN entrega a solução</h2><p>Fale com um especialista e receba o desenho operacional para o seu desafio.</p></div><button class="btn" data-go="contato">Solicitar cotação ${ARROW}</button></div></div>`}
+
+function cards(list){return `<div class="cards">${list.map(s=>`
+ <button class="card" data-go="${s.id}">
+  <div class="ph ${s.img?'':'plain'}">${s.img?`<img src="${s.img}" alt="" loading="lazy">`:svg(s.ic)}<span class="ic">${svg(s.ic)}</span></div>
+  <div class="body"><h3>${s.nome}</h3><p>${s.curto}</p><span class="go">Saiba mais →</span></div>
+ </button>`).join('')}</div>`}
+
+function stepsBlock(){return `
+<section class="navy">
+  <div class="wrap center">
+    <span class="kicker">Diferenciais</span>
+    <h2 class="title" style="margin-top:12px">Governança inteligente</h2>
+    <p class="lead" style="margin-top:18px">A KISEN como solução operacional: inteligência operacional somada à gestão integrada.</p>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Analisar</h3><p>Diagnóstico do processo, da demanda e do nível de serviço esperado.</p></div>
+      <div class="step"><span class="n">02</span><h3>Arquitetar</h3><p>Dimensionamento de pessoas, recursos, rotinas e tecnologia.</p></div>
+      <div class="step"><span class="n">03</span><h3>Realizar</h3><p>Mobilização, execução, supervisão e resposta às ocorrências.</p></div>
+      <div class="step"><span class="n">04</span><h3>Gerenciar</h3><p>Indicadores, evidências, controle e melhoria da operação.</p></div>
+      <div class="step"><span class="n">05</span><h3>Governança</h3><p>Processo completo com resultados mensuráveis.</p></div>
+    </div>
+    <p class="formula">Processo completo<i>+</i>resultados mensuráveis<i>+</i>indicadores de performance</p>
+  </div>
+</section>`}
+
+function benefits(){return `
+<section class="alt">
+  <div class="wrap center">
+    <span class="kicker">Benefícios da gestão integrada</span>
+    <h2 class="title" style="margin-top:12px">Transparência e rastreabilidade</h2>
+    <div class="bens" style="text-align:left">
+      <div class="ben">${svg('track')}<h3>Rastreabilidade</h3><p>Histórico de atividades, responsáveis, horários e evidências.</p></div>
+      <div class="ben">${svg('list')}<h3>Padronização</h3><p>Rotinas claras e execução alinhada ao nível de serviço definido.</p></div>
+      <div class="ben">${svg('gauge')}<h3>Produtividade</h3><p>Distribuição de demandas e acompanhamento da capacidade operacional.</p></div>
+      <div class="ben">${svg('eye')}<h3>Transparência gerencial</h3><p>Indicadores para avaliar desempenho, desvios e prioridades.</p></div>
+    </div>
+  </div>
+</section>`}
+
+function aboutBlock(){return `
+<section>
+  <div class="wrap split">
+    <div class="pic"><img src="img/frota.webp" alt="Base operacional KISEN com frota de caminhões"><span class="badge">Pessoas • Recursos • Tecnologia</span></div>
+    <div class="stack">
+      <span class="kicker">A empresa</span>
+      <h2 class="title">Estratégia em ação</h2>
+      <p class="lead">A KISEN é uma empresa brasileira de serviços operacionais e de facilities integrados. Unimos tecnologia e cuidado humano para transformar serviços essenciais em oportunidades reais de inclusão.</p>
+      <p class="muted">Assumimos a operação de ponta a ponta, com escopo definido, responsabilidades claras e gestão orientada por indicadores. Nosso principal diferencial são as pessoas que incluímos e desenvolvemos.</p>
+      <ul class="checks">
+        <li>Operações de campo: vistorias, ocorrências e atendimento em rota.</li>
+        <li>Conservação urbana: apoio operacional, zeladoria e resposta rápida.</li>
+        <li>Atendimento, callcenter e backoffice: central de apoio, cadastro e controle.</li>
+        <li>Vigilância, manutenção predial e facilities: serviços continuados com rotina e supervisão.</li>
+      </ul>
+      <div><button class="btn btn-line" data-go="empresa">Conheça a KISEN ${ARROW}</button></div>
+    </div>
+  </div>
+</section>`}
+
+function agirBlock(){return `
+<section class="alt">
+  <div class="wrap split">
+    <div class="stack">
+      <span class="kicker">O nome KISEN</span>
+      <h2 class="title">Agir no momento certo</h2>
+      <p class="lead">O nome e a inspiração da KISEN vêm do conceito japonês <em>kisen</em>, que significa agir no momento certo. Queremos que cada contrato seja um motor de transformação social.</p>
+      <div class="pills"><span class="pill kpi">Confiança sólida</span><span class="pill kpi">Respeito mútuo</span><span class="pill kpi">Profissionalismo</span><span class="pill kpi">Inclusão</span></div>
+    </div>
+    <div class="agir">
+      <span class="kicker">Projeto AGIR</span>
+      <h3>Trabalho, renda e autonomia</h3>
+      <p>O projeto AGIR gera trabalho, renda e autonomia para pessoas em situação de vulnerabilidade social:</p>
+      <ul class="checks">
+        <li>Mulheres que passaram por situações de violência</li>
+        <li>Jovens egressos de abrigos</li>
+        <li>Pessoas idosas ativas</li>
+        <li>Pessoas com deficiência leve</li>
+        <li>Outros grupos muitas vezes ignorados pelo mercado</li>
+      </ul>
+      <p class="muted">Ao contratar a KISEN, o cliente passa a fazer parte de uma corrente que reconstrói histórias de vida e fortalece comunidades.</p>
+    </div>
+  </div>
+</section>`}
+
+function viewInicio(){return `
+<section class="hero" style="padding:0" aria-roledescription="carrossel">
+  ${SLIDES.map((s,i)=>`<div class="slide ${i===0?'on':''}" aria-hidden="${i!==0}">
+    <img src="${s.img}" alt="">
+    <div class="inner"><span class="tag">${s.tag}</span><h1>${s.title}</h1><p class="sub">${s.sub}</p>
+      <button class="more" data-go="${s.go}">saiba mais ${CHEV}</button></div></div>`).join('')}
+  <div class="dots">${SLIDES.map((s,i)=>`<button data-slide="${i}" aria-label="Slide ${i+1}" aria-current="${i===0}"></button>`).join('')}</div>
+  ${WAVE}
+</section>
+${aboutBlock()}
+${agirBlock()}
+<section class="alt">
+  <div class="wrap center">
+    <span class="kicker">Nossas soluções</span>
+    <h2 class="title" style="margin-top:12px">Onde a solução pode ser aplicada</h2>
+    <p class="lead" style="margin-top:18px">Uma plataforma operacional para diferentes desafios. Escolha um serviço para ver o que entregamos e como controlamos.</p>
+  </div>
+  <div class="wrap">${cards(SERVICES)}</div>
+</section>
+${stepsBlock()}
+${k360Teaser()}
+<section class="alt">
+  <div class="wrap center"><span class="kicker">Blog</span><h2 class="title" style="margin-top:12px">Conteúdos KISEN</h2></div>
+  <div class="wrap">${postGrid(POSTS.slice(0,3))}<div class="center" style="margin-top:36px"><button class="btn btn-line" data-go="blog">Ver todos os artigos ${ARROW}</button></div></div>
+</section>
+${cta()}`}
+
+function k360Teaser(){return `
+<section>
+  <div class="wrap k360-only">
+    <div class="stack">
+      <span class="kicker">Tecnologia</span>
+      <h2 class="title">KISEN 360</h2>
+      <p class="lead"><strong style="color:var(--navy)">Agregando valor e entregando resultado.</strong> Gestão inteligente transformando eficiência operacional em resultados mensuráveis.</p>
+      <ul class="checks">${CONTROL.map(c=>`<li>${c}</li>`).join('')}</ul>
+      <div><button class="btn btn-line" data-go="kisen360">Conheça o KISEN 360 ${ARROW}</button></div>
+    </div>
+  </div>
+</section>`}
+
+function viewEmpresa(){return banner('img/frota.webp','Apresentação institucional','A empresa',[[null,'A empresa']])+aboutBlock()+agirBlock()+`
+<section class="alt">
+  <div class="wrap center"><span class="kicker">BPO aplicado à operação pública</span><h2 class="title" style="margin-top:12px">Como trabalhamos</h2>
+    <p class="lead" style="margin-top:18px">A KISEN assume a operação de ponta a ponta, com escopo definido, responsabilidades claras e gestão orientada por indicadores e resultados.</p></div>
+  <div class="wrap">
+    <ol class="flow">
+      <li><h3>Demanda</h3><p>Definição da necessidade, das prioridades e do resultado esperado.</p></li>
+      <li><h3>Solução</h3><p>A KISEN propõe o desenho operacional e o dimensionamento dos recursos.</p></li>
+      <li><h3>Execução</h3><p>A operação mobiliza equipes, veículos, equipamentos e rotinas.</p></li>
+      <li><h3>Controle</h3><p>Supervisão 360, evidências e indicadores dão visibilidade ao serviço.</p></li>
+    </ol>
+    <p class="result"><strong>Resultado:</strong> um serviço estruturado, rastreável e mensurável, passível de controle e avaliação.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap split">
+    <div class="stack">
+      <span class="kicker">Case</span>
+      <h2 class="title">Nossa operação com motos</h2>
+      <p class="lead">Mobilidade é uma parte da solução. O principal valor está na organização e no controle da operação.</p>
+      <ul class="checks"><li>Planejamento de rotas e prioridades</li><li>Mobilização de profissionais e veículos</li><li>Supervisão da execução em campo</li><li>Registro das atividades e evidências</li><li>Indicadores de produtividade e atendimento</li></ul>
+      <div><button class="btn btn-line" data-go="blog-case-motos">Leia o case ${ARROW}</button></div>
+    </div>
+    <div class="pic"><img src="img/motos.webp" alt="Equipe de motociclistas KISEN em operação noturna"></div>
+  </div>
+</section>
+<section class="navy">
+  <div class="wrap center"><span class="kicker">Próximo passo</span><h2 class="title" style="margin-top:12px">Criar, aprimorar e transformar</h2>
+  <p class="lead" style="margin-top:18px">Criar, aprimorar e transformar soluções para gerar mais eficiência e resultados. Onde está a oportunidade?</p></div>
+</section>`+cta()}
+
+function viewSolucoes(){return banner('img/conservacao-noite.webp','Gestão e execução de processos','Nossas soluções',[[null,'Nossas soluções']])+`
+<section>
+  <div class="wrap center"><span class="kicker">Uma plataforma operacional</span><h2 class="title" style="margin-top:12px">Várias aplicações</h2>
+  <p class="lead" style="margin-top:18px">Pessoas, recursos e tecnologia aplicados a diferentes desafios.</p></div>
+  <div class="wrap">${cards(SERVICES)}</div>
+</section>`+cta()}
+
+function viewServico(id){const s=svcById[id];
+ const media=s.video?`<div class="media"><video src="${s.video}" poster="${s.img}" autoplay muted loop playsinline aria-label="Vídeo da operação com motos"></video></div>`
+  : s.img?`<div class="media"><img src="${s.img}" alt="${s.nome}"></div>`:`<div class="media plain">${svg(s.ic)}</div>`;
+ return banner(s.img,s.tag,s.nome,[['solucoes','Nossas soluções'],[null,s.nome]])+`
+<section>
+  <div class="wrap svc-layout">
+    <div class="svc-main">
+      <div><span class="kicker">Serviço KISEN</span><p class="lead" style="margin-top:14px;color:var(--fg)">${s.lead}</p></div>
+      ${media}
+      <div><h2>O que entregamos</h2><div class="deliver">${s.entregas.map(([t,d])=>`<div><h3>${t}</h3><p>${d}</p></div>`).join('')}</div></div>
+      <div><h2>Base da operação</h2><div class="pills">${s.rotina.map(r=>`<span class="pill">${r}</span>`).join('')}</div></div>
+      <div><h2>Como controlamos</h2><div class="deliver">${CONTROL.map(c=>`<div><h3>${c}</h3><p>Registrado no KISEN 360 e disponível para o contratante.</p></div>`).join('')}</div></div>
+      <div><h2>Indicadores acompanhados</h2><div class="pills">${s.kpis.map(k=>`<span class="pill kpi">${k}</span>`).join('')}</div></div>
+    </div>
+    <aside class="side">
+      <div class="box"><h4>Nossas soluções</h4>${SERVICES.map(x=>`<button data-go="${x.id}" aria-current="${x.id===s.id}">${x.nome}<span>›</span></button>`).join('')}</div>
+      <div class="quote"><h4>Precisa deste serviço?</h4><p>Conte sua demanda e receba o desenho operacional.</p><button class="btn" data-go="contato">Solicitar cotação</button></div>
+    </aside>
+  </div>
+</section>`+cta()}
+
+function viewDiferenciais(){return banner('img/equipe.webp','Inteligência operacional + gestão integrada','Diferenciais',[[null,'Diferenciais']])+stepsBlock()+benefits()+`
+<section>
+  <div class="wrap center"><span class="kicker">Nosso compromisso</span><h2 class="title" style="margin-top:12px">Critérios objetivos</h2>
+  <p class="lead" style="margin-top:18px">Asseguramos ao cliente total transparência e rastreabilidade da execução, por meio de informações estruturadas e indicadores de performance com critérios objetivos.</p></div>
+</section>`+cta()}
+
+function viewK360(){const rows=[
+ ['OS-0417','Ronda preventiva','Vigilância','06:42','4','ok','Concluída'],
+ ['OS-0418','Ponto apagado','Iluminação pública','07:15','2','ok','Concluída'],
+ ['OS-0421','Apoio a ocorrência','Conservação urbana','08:03','3','run','Em execução'],
+ ['OS-0423','Limpeza de ambiente','Facilities','08:20','1','run','Em execução'],
+ ['OS-0426','Inspeção de rede de água','Saneamento','09:00','—','wait','Programada']];
+ return banner('img/centro-operacoes.webp','Tecnologia','KISEN 360',[[null,'KISEN 360']])+`
+<section class="navy">
+  <div class="wrap k360-only">
+    <div class="stack">
+      <span class="kicker">Agregando valor e entregando resultado</span>
+      <h2 class="title">Gestão inteligente</h2>
+      <p class="lead">Transformando eficiência operacional em resultados mensuráveis.</p>
+      <div class="feat">
+        <div><h3>Ordens de serviço</h3><p>Demandas organizadas por prioridade.</p></div>
+        <div><h3>Rotas e localização</h3><p>Onde cada equipe está e para onde vai.</p></div>
+        <div><h3>Comprovação</h3><p>Fotos e horários anexados a cada execução.</p></div>
+        <div><h3>Painéis gerenciais</h3><p>Relatórios e indicadores para o contratante.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="center"><span class="kicker">Como o registro aparece</span><h2 class="title" style="margin-top:12px">Cada atividade vira informação</h2></div>
+    <div class="os">
+      <div class="os-head"><span>Ordens de serviço · hoje</span><span>Exemplo ilustrativo</span></div>
+      <div class="os-scroll"><table>
+        <thead><tr><th>OS</th><th>Atividade</th><th>Serviço</th><th>Horário</th><th>Fotos</th><th>Status</th></tr></thead>
+        <tbody>${rows.map(r=>`<tr><td class="num">${r[0]}</td><td>${r[1]}</td><td class="muted">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td><td><span class="st ${r[5]}">${r[6]}</span></td></tr>`).join('')}</tbody>
+      </table></div>
+    </div>
+  </div>
+</section>`+benefits()+cta()}
+
+function postGrid(list){return `<div class="posts">${list.map(p=>`
+ <button class="post" data-go="blog-${p.id}"><div class="imgw"><img src="${p.img}" alt="" loading="lazy"></div>
+  <div class="body"><span class="cat">${p.cat}</span><h3>${p.title}</h3><p>${p.dek}</p><span class="rd">Leia mais →</span></div></button>`).join('')}</div>`}
+
+function viewBlog(){const cats=['Todos',...new Set(POSTS.map(p=>p.cat))];
+ const list=POSTS.filter(p=>blogFilter==='Todos'||p.cat===blogFilter);
+ return banner('img/centro-operacoes.webp','Operação, gestão e tecnologia','Blog',[[null,'Blog']])+`
+<section>
+  <div class="wrap center"><p class="lead">Artigos sobre como estruturar, controlar e medir operações de serviço.</p>
+    <div class="filters">${cats.map(c=>`<button data-filter="${c}" aria-pressed="${c===blogFilter}">${c}</button>`).join('')}</div></div>
+  <div class="wrap">${postGrid(list)}</div>
+</section>`+cta()}
+
+function viewPost(id){const p=postById[id];
+ const html=p.body.map(([t,c])=>t==='p'?`<p>${c}</p>`:t==='h'?`<h2>${c}</h2>`:t==='q'?`<blockquote>${c}</blockquote>`:`<ul>${c.map(x=>`<li>${x}</li>`).join('')}</ul>`).join('');
+ return banner(p.img,p.cat,p.title,[['blog','Blog'],[null,p.cat]])+`
+<section>
+  <article class="wrap article">
+    <p class="dek">${p.dek}</p>
+    <img src="${p.img}" alt="">
+    <div class="content">${html}</div>
+  </article>
+</section>
+<section class="alt"><div class="wrap center"><span class="kicker">Leia também</span></div><div class="wrap">${postGrid(POSTS.filter(x=>x.id!==id).slice(0,3))}</div></section>`+cta()}
+
+function viewContato(){return banner('img/atendimento.webp','Fale com um especialista','Contato',[[null,'Contato']])+`
+<section>
+  <div class="wrap contact">
+    <div class="stack">
+      <span class="kicker">Solicitar cotação</span>
+      <h2 class="title">Dê a demanda. A KISEN entrega a solução.</h2>
+      <p class="lead">Conte qual é o desafio da sua operação. A partir do diagnóstico, dimensionamos pessoas, recursos e tecnologia e apresentamos os indicadores que serão acompanhados.</p>
+      <div class="info">
+        <div class="row"><span>${svg('phone')}</span><div><b>Telefone / WhatsApp</b><span class="ph">(00) 0000-0000</span></div></div>
+        <div class="row"><span>${svg('mail')}</span><div><b>E-mail</b><span>contato@kisen.com.br</span></div></div>
+        <div class="row"><span>${svg('clock')}</span><div><b>Atendimento</b><span>Segunda a sexta</span></div></div>
+        <div class="row"><span>${svg('pin')}</span><div><b>Endereço</b><span class="ph">Endereço a inserir</span></div></div>
+      </div>
+    </div>
+    <form class="quote" id="quote" novalidate>
+      <h3>Solicite sua cotação</h3>
+      <label>Nome<input id="q-nome" required autocomplete="name"></label>
+      <label>Empresa / órgão<input id="q-emp" autocomplete="organization"></label>
+      <label>E-mail<input id="q-mail" type="email" required autocomplete="email"></label>
+      <label>Telefone<input id="q-tel" type="tel" autocomplete="tel"></label>
+      <label class="full">Serviço de interesse<select id="q-svc">${SERVICES.map(s=>`<option>${s.nome}</option>`).join('')}<option>Outro / mais de um serviço</option></select></label>
+      <label class="full">Descreva sua demanda<textarea id="q-msg" placeholder="Local, abrangência, horários e nível de serviço esperado"></textarea></label>
+      <button class="btn btn-primary" type="submit">Enviar solicitação ${ARROW}</button>
+      <div id="q-out" class="full" hidden></div>
+    </form>
+  </div>
+</section>`}
+
+function route(){
+ clearInterval(timer);
+ const h=(location.hash||'#inicio').slice(1)||'inicio';
+ let sec=h,html;
+ if(svcById[h]){html=viewServico(h);sec='solucoes'}
+ else if(h.startsWith('blog-')&&postById[h.slice(5)]){html=viewPost(h.slice(5));sec='blog'}
+ else html=({inicio:viewInicio,empresa:viewEmpresa,solucoes:viewSolucoes,diferenciais:viewDiferenciais,kisen360:viewK360,blog:viewBlog,contato:viewContato}[h]||viewInicio)();
+ app.innerHTML=`<div class="view">${html}</div>`;
+ document.querySelectorAll('.menu .lnk').forEach(b=>b.setAttribute('aria-current',b.dataset.sec===sec));
+ if(document.querySelector('.hero')) startSlider();
+ const f=document.getElementById('quote');
+ if(f) f.addEventListener('submit',e=>{e.preventDefault();const o=document.getElementById('q-out');o.hidden=false;
+   const ok=document.getElementById('q-nome').value.trim()&&document.getElementById('q-mail').value.trim();
+   o.innerHTML=`<div class="notice">${ok?'Formulário de demonstração: o envio ainda não está conectado a um e-mail, então esta solicitação não foi enviada.':'Preencha nome e e-mail para continuar.'}</div>`;});
+}
+function startSlider(){
+ const slides=[...document.querySelectorAll('.slide')],dots=[...document.querySelectorAll('.dots button')];let i=0;
+ const show=n=>{i=(n+slides.length)%slides.length;slides.forEach((s,k)=>{s.classList.toggle('on',k===i);s.setAttribute('aria-hidden',k!==i)});dots.forEach((d,k)=>d.setAttribute('aria-current',k===i))};
+ dots.forEach(d=>d.onclick=()=>{show(+d.dataset.slide);restart()});
+ const restart=()=>{clearInterval(timer);if(!matchMedia('(prefers-reduced-motion: reduce)').matches) timer=setInterval(()=>show(i+1),6500)};
+ restart();
+}
+function go(id){
+ document.getElementById('hdr').classList.remove('open');document.getElementById('burger').setAttribute('aria-expanded','false');
+ if(('#'+id)!==location.hash){try{history.pushState(null,'','#'+id)}catch(e){}}
+ route();window.scrollTo({top:0,behavior:'instant'});
+}
+document.addEventListener('click',e=>{
+ const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}
+ const f=e.target.closest('[data-filter]');if(f){blogFilter=f.dataset.filter;route()}
+});
+document.getElementById('burger').onclick=()=>{const h=document.getElementById('hdr');h.classList.toggle('open');document.getElementById('burger').setAttribute('aria-expanded',h.classList.contains('open'))};
+window.addEventListener('popstate',route);
+window.addEventListener('hashchange',route);
+document.getElementById('drop').innerHTML=SERVICES.map(s=>`<button data-go="${s.id}">${s.nome}</button>`).join('');
+document.getElementById('f-svc').innerHTML=SERVICES.map(s=>`<li><button data-go="${s.id}">${s.nome}</button></li>`).join('');
+route();
+</script>
+
+</body>
+</html>
